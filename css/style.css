@@ -271,6 +271,14 @@ p { margin: 0; }
   text-align: center;
   padding: 20px;
 }
+/* Atribut [hidden] & class .hero__placeholder sama-sama spesifisitas
+   0-0-1-0, dan aturan class ini datang setelah UA stylesheet, jadi
+   "display: flex" di atas selalu menang dan menimpa "display: none"
+   bawaan [hidden]. Placeholder pun tetap tampil menimpa foto walau
+   welcome.png sudah terpasang & elemen sudah diberi atribut hidden. */
+.hero__placeholder[hidden] {
+  display: none;
+}
 .hero__placeholder svg { width: 72px; height: 72px; opacity: 0.85; }
 .hero__placeholder strong { font-family: var(--font-display); font-size: 1.05rem; color: var(--sky-deep); }
 .hero__placeholder span { font-size: 0.85rem; color: var(--ink-soft); max-width: 320px; }

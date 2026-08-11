@@ -126,7 +126,7 @@ export const SERAGAM_DEFAULT = {
 };
 
 export const KONTEN_DEFAULT = {
-  judul: "Selamat Datang di Kelas Kita",
+  judul: "Selamat Datang di Tujuh Satu",
   deskripsi:
     "Tempat menyimpan jadwal, struktur kelas, seragam, catatan, dan berbagai informasi kelas.",
 };

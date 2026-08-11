@@ -1,0 +1,48 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": false,
+
+    "admin_uids": {
+      ".read": true,
+      "$uid": {
+        ".write": "auth != null && auth.uid === $uid && !data.exists() && root.child('meta/adminInitialized').val() !== true",
+        ".validate": "newData.isBoolean() && newData.val() === true"
+      }
+    },
+
+    "meta": {
+      "adminInitialized": {
+        ".write": "auth != null && root.child('meta/adminInitialized').val() !== true"
+      }
+    },
+
+    "konten": {
+      ".write": "auth != null && root.child('admin_uids').child(auth.uid).exists()"
+    },
+
+    "struktur": {
+      ".write": "auth != null && root.child('admin_uids').child(auth.uid).exists()"
+    },
+
+    "jadwal": {
+      ".write": "auth != null && root.child('admin_uids').child(auth.uid).exists()"
+    },
+
+    "seragam": {
+      ".write": "auth != null && root.child('admin_uids').child(auth.uid).exists()"
+    },
+
+    "siswa": {
+      ".write": "auth != null && root.child('admin_uids').child(auth.uid).exists()"
+    },
+
+    "catatan": {
+      ".write": "auth != null && root.child('admin_uids').child(auth.uid).exists()",
+      "$noteId": {
+        ".write": "(auth != null && root.child('admin_uids').child(auth.uid).exists()) || (!data.exists() && newData.hasChildren(['nama','pesan','waktu']))",
+        ".validate": "newData.child('nama').isString() && newData.child('nama').val().length > 0 && newData.child('nama').val().length <= 40 && newData.child('pesan').isString() && newData.child('pesan').val().length > 0 && newData.child('pesan').val().length <= 500 && newData.child('waktu').isNumber()"
+      }
+    }
+  }
+}

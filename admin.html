@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Admin — Kelas Kita</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="admin-body">
+
+<!-- ============ LOGIN ============ -->
+<div class="login-shell" id="loginShell">
+  <div class="login-card">
+    <div class="login-card__brand">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="64" height="64" rx="16" fill="#3873a8"/>
+        <circle cx="26" cy="27" r="10" fill="#fff"/>
+        <path d="M12 45c4-13 15-19 25-19s21 6 25 19" fill="#fff"/>
+      </svg>
+      Kelas Kita
+    </div>
+    <h1>Masuk Admin</h1>
+    <p class="login-card__sub">Panel ini hanya untuk pengelola kelas.</p>
+
+    <p class="login-alert" id="loginAlert"></p>
+    <div class="login-setup" id="loginSetup">
+      <p>Akun admin belum dibuat di sistem ini. Buat akun admin pertama menggunakan kredensial yang baru saja kamu masukkan?</p>
+      <button class="btn btn--primary btn--block btn--sm" type="button" id="btnSetupAdmin">Buat Akun Admin</button>
+    </div>
+
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <label for="loginUsername">Username</label>
+        <input type="text" id="loginUsername" autocomplete="username" required />
+      </div>
+      <div class="field">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" autocomplete="current-password" required />
+      </div>
+      <button class="btn btn--primary btn--block" type="submit" id="loginSubmit">Masuk</button>
+    </form>
+  </div>
+</div>
+
+<!-- ============ DASHBOARD ============ -->
+<div class="admin-shell" id="adminShell">
+  <div class="admin-overlay" id="adminOverlay"></div>
+
+  <aside class="admin-side" id="adminSide">
+    <div class="admin-side__brand">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="64" height="64" rx="16" fill="#3873a8"/>
+        <circle cx="26" cy="27" r="10" fill="#fff"/>
+        <path d="M12 45c4-13 15-19 25-19s21 6 25 19" fill="#fff"/>
+      </svg>
+      Admin Kelas
+    </div>
+
+    <button class="admin-tab is-active" data-tab="konten" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16M4 12h16M4 19h10"/></svg>
+      Konten Beranda
+    </button>
+    <button class="admin-tab" data-tab="struktur" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c1.4-4.2 4.2-6.2 7-6.2s5.6 2 7 6.2"/></svg>
+      Struktur Kelas
+    </button>
+    <button class="admin-tab" data-tab="jadwal" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M8 3v4M16 3v4"/></svg>
+      Jadwal Kelas
+    </button>
+    <button class="admin-tab" data-tab="seragam" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 4l4 2 4-2 3 4-3 2v10H5V10L2 8z"/></svg>
+      Seragam
+    </button>
+    <button class="admin-tab" data-tab="siswa" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3.5 20c.8-3.6 3-5.4 5.5-5.4s4.7 1.8 5.5 5.4M14.5 20c.5-2.4 1.7-3.8 3-4.2"/></svg>
+      Kami Semua
+    </button>
+    <button class="admin-tab" data-tab="catatan" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h14v14l-4 3-3-2-3 2-4-3z"/></svg>
+      Catatan Kelas
+    </button>
+
+    <div class="admin-side__footer">
+      <div class="admin-side__user" id="adminUserLabel"></div>
+      <button class="btn btn--ghost btn--block btn--sm" id="btnLogout" type="button" style="color:#eaf3fa;border-color:rgba(255,255,255,0.3);">Keluar</button>
+    </div>
+  </aside>
+
+  <div class="admin-main">
+    <div class="admin-topbar">
+      <button class="admin-topbar__menu" id="btnOpenSide" aria-label="Buka menu admin">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <strong>Admin Kelas</strong>
+      <span></span>
+    </div>
+
+    <!-- Konten Beranda -->
+    <section class="admin-panel is-active" data-panel="konten">
+      <div class="admin-panel__head">
+        <h2>Konten Beranda</h2>
+        <p>Judul dan deskripsi yang tampil di atas foto beranda.</p>
+      </div>
+      <div class="admin-card" style="max-width:520px;">
+        <form id="formKonten">
+          <div class="field">
+            <label for="kontenJudul">Judul</label>
+            <input type="text" id="kontenJudul" maxlength="80" />
+          </div>
+          <div class="field">
+            <label for="kontenDeskripsi">Deskripsi</label>
+            <textarea id="kontenDeskripsi" maxlength="200"></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit">Simpan Konten</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Struktur Kelas -->
+    <section class="admin-panel" data-panel="struktur">
+      <div class="admin-panel__head">
+        <h2>Struktur Kelas</h2>
+        <p>Kelola wali kelas dan pengurus inti.</p>
+      </div>
+      <div class="admin-grid">
+        <div class="admin-card">
+          <h3>Daftar Anggota</h3>
+          <div class="admin-list" id="strukturList"></div>
+        </div>
+        <div class="admin-card">
+          <h3 id="strukturFormTitle">Tambah Anggota</h3>
+          <form id="formStruktur">
+            <input type="hidden" id="strukturId" />
+            <div class="field">
+              <label for="strukturJabatan">Jabatan</label>
+              <input type="text" id="strukturJabatan" maxlength="40" required />
+            </div>
+            <div class="field">
+              <label for="strukturNama">Nama</label>
+              <input type="text" id="strukturNama" maxlength="60" />
+            </div>
+            <div class="field">
+              <label for="strukturFoto">URL Foto</label>
+              <input type="url" id="strukturFoto" placeholder="https://..." />
+            </div>
+            <div class="field">
+              <label for="strukturDeskripsi">Deskripsi (opsional)</label>
+              <textarea id="strukturDeskripsi" maxlength="150"></textarea>
+            </div>
+            <div class="field">
+              <label for="strukturOrder">Urutan tampil</label>
+              <input type="number" id="strukturOrder" min="1" step="1" />
+            </div>
+            <div class="form-actions">
+              <button class="btn btn--primary" type="submit">Simpan</button>
+              <button class="btn btn--ghost" type="button" id="strukturCancel">Batal</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Jadwal Kelas -->
+    <section class="admin-panel" data-panel="jadwal">
+      <div class="admin-panel__head">
+        <h2>Jadwal Kelas</h2>
+        <p>Pilih hari, lalu kelola jam dan mata pelajaran.</p>
+      </div>
+      <div class="hari-tabs" id="jadwalHariTabs"></div>
+      <div class="admin-grid">
+        <div class="admin-card">
+          <h3 id="jadwalListTitle">Jadwal</h3>
+          <div class="admin-list" id="jadwalAdminList"></div>
+        </div>
+        <div class="admin-card">
+          <h3 id="jadwalFormTitle">Tambah Jam Pelajaran</h3>
+          <form id="formJadwal">
+            <input type="hidden" id="jadwalItemId" />
+            <div class="field">
+              <label for="jadwalJam">Jam ke-</label>
+              <input type="number" id="jadwalJam" min="1" max="12" required />
+            </div>
+            <div class="field">
+              <label for="jadwalMapel">Pelajaran</label>
+              <input type="text" id="jadwalMapel" maxlength="60" required />
+            </div>
+            <div class="form-actions">
+              <button class="btn btn--primary" type="submit">Simpan</button>
+              <button class="btn btn--ghost" type="button" id="jadwalCancel">Batal</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seragam -->
+    <section class="admin-panel" data-panel="seragam">
+      <div class="admin-panel__head">
+        <h2>Seragam</h2>
+        <p>Atur ketentuan seragam untuk tiap hari.</p>
+      </div>
+      <div class="admin-card">
+        <div id="seragamForms"></div>
+      </div>
+    </section>
+
+    <!-- Kami Semua -->
+    <section class="admin-panel" data-panel="siswa">
+      <div class="admin-panel__head">
+        <h2>Kami Semua</h2>
+        <p>Kelola daftar anggota kelas yang tampil di galeri.</p>
+      </div>
+      <div class="admin-grid">
+        <div class="admin-card">
+          <h3>Daftar Anggota</h3>
+          <div class="admin-list" id="siswaList"></div>
+        </div>
+        <div class="admin-card">
+          <h3 id="siswaFormTitle">Tambah Siswa</h3>
+          <form id="formSiswa">
+            <input type="hidden" id="siswaId" />
+            <div class="field">
+              <label for="siswaNama">Nama</label>
+              <input type="text" id="siswaNama" maxlength="60" required />
+            </div>
+            <div class="field">
+              <label for="siswaFoto">URL Foto</label>
+              <input type="url" id="siswaFoto" placeholder="https://..." />
+            </div>
+            <div class="field">
+              <label for="siswaKeterangan">Keterangan (opsional)</label>
+              <input type="text" id="siswaKeterangan" maxlength="60" />
+            </div>
+            <div class="form-actions">
+              <button class="btn btn--primary" type="submit">Simpan</button>
+              <button class="btn btn--ghost" type="button" id="siswaCancel">Batal</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catatan -->
+    <section class="admin-panel" data-panel="catatan">
+      <div class="admin-panel__head">
+        <h2>Catatan Kelas</h2>
+        <p>Hapus catatan yang tidak sopan, spam, atau melanggar aturan kelas.</p>
+      </div>
+      <div class="admin-card">
+        <div class="admin-list" id="catatanAdminList"></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script type="module" src="js/admin.js"></script>
+</body>
+</html>

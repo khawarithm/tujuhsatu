@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Kelas Kita — Beranda</title>
+<meta name="description" content="Website kelas: struktur, jadwal, seragam, dan catatan kelas." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233873a8'/%3E%3Ccircle cx='26' cy='28' r='11' fill='%23fff'/%3E%3Cpath d='M12 46c4-14 16-20 26-20s22 6 26 20' fill='%23fff'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<a class="visually-hidden" href="#konten-utama">Lompat ke konten utama</a>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar" id="navbar">
+  <div class="container navbar__inner">
+    <a class="navbar__brand" href="#beranda" data-nav="beranda">
+      <svg class="navbar__brand-mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="64" height="64" rx="16" fill="#3873a8"/>
+        <circle cx="26" cy="27" r="10" fill="#fff"/>
+        <path d="M12 45c4-13 15-19 25-19s21 6 25 19" fill="#fff"/>
+      </svg>
+      Kelas Kita
+    </a>
+
+    <nav class="navbar__links" aria-label="Navigasi utama">
+      <a class="navbar__link" href="#struktur" data-nav="struktur">Struktur Kelas</a>
+      <a class="navbar__link" href="#jadwal" data-nav="jadwal">Jadwal Kelas</a>
+      <a class="navbar__link" href="#seragam" data-nav="seragam">Seragam</a>
+      <a class="navbar__link" href="#kami-semua" data-nav="kami-semua">Kami Semua</a>
+      <a class="navbar__link" href="#catatan" data-nav="catatan">Catatan</a>
+    </nav>
+
+    <button class="navbar__toggle" id="navToggle" aria-expanded="false" aria-controls="navSheet" aria-label="Buka menu">
+      <span></span>
+    </button>
+  </div>
+
+  <nav class="navbar__sheet" id="navSheet" aria-label="Navigasi mobile">
+    <a class="navbar__link" href="#beranda" data-nav="beranda">Beranda</a>
+    <a class="navbar__link" href="#struktur" data-nav="struktur">Lihat Struktur Kelas</a>
+    <a class="navbar__link" href="#jadwal" data-nav="jadwal">Lihat Jadwal Kelas</a>
+    <a class="navbar__link" href="#seragam" data-nav="seragam">Lihat Seragam</a>
+    <a class="navbar__link" href="#kami-semua" data-nav="kami-semua">Kami Semua</a>
+    <a class="navbar__link" href="#catatan" data-nav="catatan">Catatan Kelas</a>
+  </nav>
+</header>
+
+<main id="konten-utama">
+
+  <!-- ============ BERANDA / DASHBOARD ============ -->
+  <section class="page-section" id="beranda">
+    <div class="hero container">
+      <div class="hero__banner">
+        <img class="hero__img" id="welcomeImg" src="/welcome.png" alt="Foto bersama kelas" />
+        <div class="hero__placeholder" id="welcomePlaceholder" hidden>
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="26" cy="24" r="9" fill="currentColor" opacity="0.5"/>
+            <path d="M8 46c4-12 14-17 24-17s20 5 24 17" fill="currentColor" opacity="0.5"/>
+          </svg>
+          <strong>Foto bersama belum dipasang</strong>
+          <span>Letakkan file <code>welcome.png</code> (rasio 16:9) di folder utama website.</span>
+        </div>
+        <div class="hero__scrim" aria-hidden="true"></div>
+        <div class="hero__caption">
+          <span class="hero__eyebrow">Dashboard Kelas</span>
+          <h1 class="hero__title" id="heroTitle">Selamat Datang di Kelas Kita</h1>
+          <p class="hero__desc" id="heroDesc">Tempat menyimpan jadwal, struktur kelas, seragam, catatan, dan berbagai informasi kelas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="quicklinks container">
+      <div class="quicklinks__grid">
+        <a class="quicklink" href="#struktur">
+          <span class="quicklink__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c1.4-4.2 4.2-6.2 7-6.2s5.6 2 7 6.2"/></svg></span>
+          <span class="quicklink__label">Struktur Kelas</span>
+          <span class="quicklink__sub">Wali kelas &amp; pengurus</span>
+        </a>
+        <a class="quicklink" href="#jadwal">
+          <span class="quicklink__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M8 3v4M16 3v4"/></svg></span>
+          <span class="quicklink__label">Jadwal Kelas</span>
+          <span class="quicklink__sub">Senin – Jumat</span>
+        </a>
+        <a class="quicklink" href="#seragam">
+          <span class="quicklink__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 4l4 2 4-2 3 4-3 2v10H5V10L2 8z"/></svg></span>
+          <span class="quicklink__label">Seragam</span>
+          <span class="quicklink__sub">Ketentuan harian</span>
+        </a>
+        <a class="quicklink" href="#kami-semua">
+          <span class="quicklink__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3.5 20c.8-3.6 3-5.4 5.5-5.4s4.7 1.8 5.5 5.4M14.5 20c.5-2.4 1.7-3.8 3-4.2"/></svg></span>
+          <span class="quicklink__label">Kami Semua</span>
+          <span class="quicklink__sub">Galeri anggota kelas</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <svg class="horizon" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30c120 20 220-20 340 0s220 24 350 4 230-22 360 0 220 22 370-2v28H0z"/></svg>
+
+  <!-- ============ STRUKTUR KELAS ============ -->
+  <section class="page-section section" id="struktur">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <span class="section__kicker">Pengurus</span>
+          <h2 class="section__title">Struktur Kelas</h2>
+          <p class="section__desc">Orang-orang yang menjaga kelas ini tetap berjalan.</p>
+        </div>
+      </div>
+
+      <div id="strukturLead"></div>
+      <div class="struktur__grid" id="strukturGrid"></div>
+    </div>
+  </section>
+
+  <svg class="horizon horizon--light" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34c140 16 260-18 380 0s210 22 340 2 240-20 360 2 220 18 360-4v26H0z"/></svg>
+
+  <!-- ============ JADWAL KELAS ============ -->
+  <section class="page-section section section--tint" id="jadwal">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <span class="section__kicker">Rutinitas</span>
+          <h2 class="section__title">Jadwal Kelas</h2>
+          <p class="section__desc">Pilih hari untuk melihat mata pelajaran dan jam.</p>
+        </div>
+      </div>
+
+      <div class="jadwal__tabs" id="jadwalTabs" role="tablist" aria-label="Pilih hari"></div>
+      <div class="jadwal__table-wrap">
+        <table class="jadwal__table">
+          <thead><tr><th scope="col">Jam</th><th scope="col">Pelajaran</th></tr></thead>
+          <tbody id="jadwalTableBody"></tbody>
+        </table>
+      </div>
+      <div class="jadwal__list" id="jadwalList"></div>
+    </div>
+  </section>
+
+  <!-- ============ SERAGAM ============ -->
+  <section class="page-section section" id="seragam">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <span class="section__kicker">Ketentuan</span>
+          <h2 class="section__title">Seragam</h2>
+          <p class="section__desc">Ketentuan seragam untuk setiap hari sekolah.</p>
+        </div>
+      </div>
+      <div class="seragam__grid" id="seragamGrid"></div>
+    </div>
+  </section>
+
+  <svg class="horizon" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30c120 20 220-20 340 0s220 24 350 4 230-22 360 0 220 22 370-2v28H0z"/></svg>
+
+  <!-- ============ KAMI SEMUA ============ -->
+  <section class="page-section section section--tint" id="kami-semua">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <span class="section__kicker">Galeri</span>
+          <h2 class="section__title">Kami Semua</h2>
+          <p class="section__desc">Seluruh anggota kelas, satu per satu.</p>
+        </div>
+      </div>
+      <div class="siswa__grid" id="siswaGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ CATATAN KELAS ============ -->
+  <section class="page-section section" id="catatan">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <span class="section__kicker">Papan Kelas</span>
+          <h2 class="section__title">Catatan Kelas</h2>
+          <p class="section__desc">Tinggalkan pesan, pengingat, atau info penting untuk teman sekelas.</p>
+        </div>
+      </div>
+
+      <div class="catatan__layout">
+        <form class="catatan-form" id="catatanForm" novalidate>
+          <h3>Tulis catatan</h3>
+          <p class="catatan-form__hint">Catatan akan tampil untuk semua orang di kelas.</p>
+
+          <div class="field" id="fieldNama">
+            <label for="inputNama">Dari</label>
+            <input type="text" id="inputNama" name="nama" maxlength="40" placeholder="Nama kamu" autocomplete="off" />
+            <p class="field__error">Nama tidak boleh kosong.</p>
+          </div>
+
+          <div class="field" id="fieldPesan">
+            <label for="inputPesan">Pesan</label>
+            <textarea id="inputPesan" name="pesan" maxlength="500" placeholder="Tulis pesan di sini..."></textarea>
+            <p class="field__count"><span id="pesanCount">0</span>/500</p>
+            <p class="field__error">Pesan tidak boleh kosong.</p>
+          </div>
+
+          <button class="btn btn--primary btn--block" type="submit" id="catatanSubmit">Kirim Catatan</button>
+        </form>
+
+        <div class="board" id="catatanBoard"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p><strong>Kelas Kita</strong> — dibuat dan dirawat bersama.</p>
+  </div>
+</footer>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

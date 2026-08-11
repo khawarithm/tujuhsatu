@@ -91,15 +91,29 @@ p { margin: 0; }
   height: var(--nav-h);
   display: flex;
   align-items: center;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s var(--ease);
+}
+/* Latar blur dipisah ke pseudo-element supaya backdrop-filter TIDAK
+   ada di .navbar langsung. backdrop-filter/filter pada elemen induk
+   membuat containing block baru untuk anak position:fixed, sehingga
+   .navbar__sheet (menu mobile) jadi ikut "terkurung" di dalam kotak
+   .navbar yang tingginya cuma setinggi navbar -> menu terpotong. */
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: rgba(246, 250, 253, 0.75);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
+  transition: background 0.25s var(--ease);
 }
 .navbar.is-scrolled {
-  background: rgba(246, 250, 253, 0.94);
   border-bottom-color: var(--line);
+}
+.navbar.is-scrolled::before {
+  background: rgba(246, 250, 253, 0.94);
 }
 
 .navbar__inner {
